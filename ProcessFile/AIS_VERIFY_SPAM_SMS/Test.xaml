@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1050,546" sap2010:WorkflowViewState.IdRef="Test_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Test" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1050,546" sap2010:WorkflowViewState.IdRef="Test_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="29">
+    <scg:List x:TypeArguments="x:String" Capacity="58">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -30,10 +30,18 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>UiPath.Activities.Contracts</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="25">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="50">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -59,9 +67,12 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Test" sap:VirtualizedContainerService.HintSize="376,302" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Test" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="STRpassword" />
     </Sequence.Variables>
@@ -70,11 +81,5 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetPassword DisplayName="Get Password" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFlwj9RxX10Ogpvw0LVN89AAAAAACAAAAAAAQZgAAAAEAACAAAABn/92lmBkoMUWABBZ/zaKNz2AXF5neiW+ImtGtEssHmwAAAAAOgAAAAAIAACAAAADYDG1H5VuCVG42AX+1FAr1Yt+stO7Mip/bu9cJOxBClyAAAACedxNj99eFeLc9DookR9TK75Adkx3poQUh9wEz45VtpkAAAABYs8gRx2E4H7omMk3qT1HurQ/uxjWLYZrN0vSufqhy3ZlWXymFi4J1TNFx1se3DJcuVUkrgFSPnFmDWSUaRdYR" Result="[STRpassword]" />
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" Body="TEMPLATE EMAIL" DisplayName="Send SMTP Mail Message" Email="nampe.casmatt@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="334,148" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="[STRpassword]" Port="587" SecureConnection="None" Server="smtp.gmail.com" Subject="X" TimeoutMS="30000" To="nampe.sp@gmail.com">
-      <ui:SendMail.Files>
-        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-      </ui:SendMail.Files>
-    </ui:SendMail>
   </Sequence>
 </Activity>
