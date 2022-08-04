@@ -1,0 +1,558 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_2_PostXMLCSO" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Xml.Linq" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_RESULT_MESSAGE" Type="OutArgument(x:String)" />
+    <x:Property Name="out_RESULT_CODE" Type="OutArgument(x:String)" />
+    <x:Property Name="out_SALEREP_SMES" Type="OutArgument(x:String)" />
+    <x:Property Name="out_EMAIL_CONTENT_SI" Type="OutArgument(x:String)" />
+    <x:Property Name="out_SALEREP_DUMMY" Type="OutArgument(x:String)" />
+    <x:Property Name="out_SALEREP_USERS" Type="OutArgument(x:String)" />
+    <x:Property Name="in_MOBILE_NO" Type="InArgument(x:String)" />
+    <x:Property Name="in_ACCOUNT_NO" Type="InArgument(x:String)" />
+    <x:Property Name="in_OPTION_NO" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1050,3227</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_2_PostXMLCSO_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="31">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="1_GET_RESULT_API" sap:VirtualizedContainerService.HintSize="1033,3162" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sxl:XElement" Name="XMLapi" />
+      <Variable x:TypeArguments="x:Int32" Name="STATUSCODE" />
+      <Variable x:TypeArguments="x:String" Name="HTTP_RESULT" />
+      <Variable x:TypeArguments="x:Int32" Name="INDEX_RESULT_API" />
+      <Variable x:TypeArguments="sxl:XNamespace" Default="[&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;]" Name="XML_SOAPENV" />
+      <Variable x:TypeArguments="sxl:XNamespace" Default="[&quot;http://tempuri.org/&quot;]" Name="XML_TEM" />
+      <Variable x:TypeArguments="sxl:XDocument" Name="XMLDocument" />
+      <Variable x:TypeArguments="x:String" Name="XML_CONTENTTYPE" />
+      <Variable x:TypeArguments="x:String" Name="XML_SOAPAction" />
+      <Variable x:TypeArguments="x:String" Name="XML_ENDPOINT" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="ดึงข้อมูลจากไฟล์ Configs  ที่เป็นในส่วนของการตั้งค่า XML เพื่อส่ง API" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="991,255" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="sxl:XNamespace">[XML_SOAPENV]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="sxl:XNamespace">[in_Config("XML_SOAPENV").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="sxl:XNamespace">[XML_TEM]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="sxl:XNamespace">[in_Config("XML_TEM").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[XML_CONTENTTYPE]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_Config("XML_CONTENTTYPE").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[XML_SOAPAction]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_Config("XML_SOAPAction").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[XML_ENDPOINT]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_Config("XML_ENDPOINT").ToString]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <If sap2010:Annotation.AnnotationText="ตรวจสอบเงื่อนไขว่าเป็นเคส MOBILE หรือ ACCOUNT เพื่อเตรียมข้อมูลส่งให้ API IM" Condition="[String.IsNullOrEmpty(in_MOBILE_NO) = False]" sap:VirtualizedContainerService.HintSize="991,753" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="MOBILE_NO" sap:VirtualizedContainerService.HintSize="473,562" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="sxl:XAttribute" Name="ATR" />
+            <Variable x:TypeArguments="sxl:XAttribute" Name="ATR2" />
+            <Variable x:TypeArguments="sxl:XElement" Name="POST_MOBILE_NO" />
+            <Variable x:TypeArguments="sxl:XElement" Name="POST_ACCOUNT_NO" />
+            <Variable x:TypeArguments="sxl:XElement" Name="NODE3" />
+            <Variable x:TypeArguments="sxl:XElement" Name="NODE2" />
+            <Variable x:TypeArguments="sxl:XElement" Name="POST_OPTION" />
+            <Variable x:TypeArguments="sxl:XNamespace" Default="[&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;]" Name="SOAPENV" />
+            <Variable x:TypeArguments="sxl:XNamespace" Default="[&quot;http://tempuri.org/&quot;]" Name="TEM" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MultipleAssign DisplayName="Multiple Assign : MOBILE_NO" sap:VirtualizedContainerService.HintSize="431,317" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XAttribute">[ATR]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XAttribute">[new XAttribute(XNamespace.Xmlns + "soapenv" ,XML_SOAPENV.NamespaceName )]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XAttribute">[ATR2]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XAttribute">[new XAttribute(XNamespace.Xmlns + "tem" ,XML_TEM.NamespaceName )]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[POST_OPTION]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_TEM+"OPTION",1)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[POST_ACCOUNT_NO]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_TEM+"ACCOUNT_NO",in_ACCOUNT_NO)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[POST_MOBILE_NO]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_TEM+"MOBILE_NO",in_MOBILE_NO)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[NODE2]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_TEM+"csoQueryAllProfileWs",POST_OPTION,POST_ACCOUNT_NO,POST_MOBILE_NO)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[NODE3]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_SOAPENV+"Body",NODE2)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[XMLapi]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_SOAPENV+"Envelope",ATR,ATR2,NODE3)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:MultipleAssign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogMessage_InfoFile workflow" sap:VirtualizedContainerService.HintSize="431,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\LogControl\LogMessage_InfoFile.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessLog">
+                <Literal x:TypeArguments="x:String">Process</Literal>
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_NoteLog">
+                <Literal x:TypeArguments="x:String">-</Literal>
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;เตรียมส่งข้อมูลไปยัง SOAPapi โดยมีรายละเอียดดังนี้ MOBILE_NO :  &quot; +   in_MOBILE_NO.ToString" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PathLogFile">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PATH_LOGMESSSGE&quot;).ToString + &quot;\&quot;" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_FileXAML">
+                <Literal x:TypeArguments="x:String">1_GET_RESULT_API.xaml</Literal>
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="ACCOUNT_NO" sap:VirtualizedContainerService.HintSize="473,562" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="sxl:XAttribute" Name="ATR" />
+            <Variable x:TypeArguments="sxl:XAttribute" Name="ATR2" />
+            <Variable x:TypeArguments="sxl:XElement" Name="POST_MOBILE_NO" />
+            <Variable x:TypeArguments="sxl:XElement" Name="POST_ACCOUNT_NO" />
+            <Variable x:TypeArguments="sxl:XElement" Name="NODE4" />
+            <Variable x:TypeArguments="sxl:XElement" Name="NODE3" />
+            <Variable x:TypeArguments="sxl:XElement" Name="NODE2" />
+            <Variable x:TypeArguments="sxl:XElement" Name="POST_OPTION" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MultipleAssign DisplayName="Multiple Assign :  ACCOUNT_NO" sap:VirtualizedContainerService.HintSize="431,317" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+            <ui:MultipleAssign.AssignOperations>
+              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XAttribute">[ATR]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XAttribute">[new XAttribute(XNamespace.Xmlns + "soapenv" ,XML_SOAPENV.NamespaceName )]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XAttribute">[ATR2]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XAttribute">[new XAttribute(XNamespace.Xmlns + "tem" ,XML_TEM.NamespaceName )]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[POST_OPTION]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_TEM+"OPTION",0)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[POST_ACCOUNT_NO]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_TEM+"ACCOUNT_NO",in_ACCOUNT_NO)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[POST_MOBILE_NO]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_TEM+"MOBILE_NO",in_MOBILE_NO)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[NODE2]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_TEM+"csoQueryAllProfileWs",POST_OPTION,POST_ACCOUNT_NO,POST_MOBILE_NO)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[NODE3]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_SOAPENV+"Body",NODE2)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
+                  <ui:AssignOperation.To>
+                    <OutArgument x:TypeArguments="sxl:XElement">[XMLapi]</OutArgument>
+                  </ui:AssignOperation.To>
+                  <ui:AssignOperation.Value>
+                    <InArgument x:TypeArguments="sxl:XElement">[new XElement(XML_SOAPENV+"Envelope",ATR,ATR2,NODE3)]</InArgument>
+                  </ui:AssignOperation.Value>
+                </ui:AssignOperation>
+              </scg:List>
+            </ui:MultipleAssign.AssignOperations>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:MultipleAssign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogMessage_InfoFile workflow" sap:VirtualizedContainerService.HintSize="431,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\LogControl\LogMessage_InfoFile.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessLog">
+                <Literal x:TypeArguments="x:String">Process</Literal>
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_NoteLog">
+                <Literal x:TypeArguments="x:String">-</Literal>
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;เตรียมส่งข้อมูลไปยัง SOAPapi โดยมีรายละเอียดดังนี้ ACCOUNT_NO :  &quot; +   in_ACCOUNT_NO.ToString" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PathLogFile">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PATH_LOGMESSSGE&quot;).ToString + &quot;\&quot;" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_FileXAML">
+                <Literal x:TypeArguments="x:String">1_GET_RESULT_API.xaml</Literal>
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Else>
+    </If>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="991,1982" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence sap:VirtualizedContainerService.HintSize="604,1750" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" EnableSSLVerification="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="XML" Body="[XMLapi.ToString]" BodyFormat="" DisplayName="HTTP Request" EndPoint="[XML_ENDPOINT]" sap:VirtualizedContainerService.HintSize="562,22" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[HTTP_RESULT]" StatusCode="[STATUSCODE]" TimeoutMS="30000">
+            <ui:HttpClient.Attachments>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Attachments>
+            <ui:HttpClient.Cookies>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Cookies>
+            <ui:HttpClient.Headers>
+              <InArgument x:TypeArguments="x:String" x:Key="SOAPAction">[XML_SOAPAction]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Content-Type">[XML_CONTENTTYPE]</InArgument>
+            </ui:HttpClient.Headers>
+            <ui:HttpClient.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Parameters>
+            <ui:HttpClient.UrlSegments>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.UrlSegments>
+          </ui:HttpClient>
+          <ui:DeserializeXml DisplayName="Deserialize XML" sap:VirtualizedContainerService.HintSize="562,60" sap2010:WorkflowViewState.IdRef="DeserializeXml_3" XMLDocument="[XMLDocument]" XMLString="[HTTP_RESULT]" />
+          <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="[INDEX_RESULT_API]" DisplayName="Loop API :  RESULT_CODE " sap:VirtualizedContainerService.HintSize="562,1247" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[XMLDocument.Element(XML_SOAPENV+&quot;Envelope&quot;).Element(XML_SOAPENV+&quot;Body&quot;).Elements(XML_TEM+&quot;csoQueryAllProfileWsResponse&quot;).Elements.Elements]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,1122" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[INDEX_RESULT_API = 0]" DisplayName="GET DATA :RESULT MESSAGE" sap:VirtualizedContainerService.HintSize="484,495" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="394,305" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="352,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[out_RESULT_CODE]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(item.ToString,"&lt;[^&gt;]*&gt;","").ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogMessage_InfoFile workflow" sap:VirtualizedContainerService.HintSize="352,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Process\LogControl\LogMessage_InfoFile.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_ProcessLog">
+                              <Literal x:TypeArguments="x:String">Process</Literal>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_NoteLog">
+                              <Literal x:TypeArguments="x:String">-</Literal>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;API RETURN :  RESULT_CODE =&gt; &quot; + out_RESULT_CODE" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_PathLogFile">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PATH_LOGMESSSGE&quot;).ToString + &quot;\&quot;" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FileXAML">
+                              <Literal x:TypeArguments="x:String">1_GET_RESULT_API.xaml</Literal>
+                            </InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                      </Sequence>
+                    </If.Then>
+                  </If>
+                  <If Condition="[INDEX_RESULT_API = 1]" DisplayName="GET DATA :RESULT_CODE" sap:VirtualizedContainerService.HintSize="484,495" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="394,305" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="352,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[out_RESULT_MESSAGE]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(item.ToString,"&lt;[^&gt;]*&gt;","").ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogMessage_InfoFile workflow" sap:VirtualizedContainerService.HintSize="352,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Process\LogControl\LogMessage_InfoFile.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_ProcessLog">
+                              <Literal x:TypeArguments="x:String">Process</Literal>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_NoteLog">
+                              <Literal x:TypeArguments="x:String">-</Literal>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;API RETURN :  RESULT_MESSAGE =&gt; &quot; + out_RESULT_MESSAGE" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_PathLogFile">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PATH_LOGMESSSGE&quot;).ToString + &quot;\&quot;" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FileXAML">
+                              <Literal x:TypeArguments="x:String">1_GET_RESULT_API.xaml</Literal>
+                            </InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                      </Sequence>
+                    </If.Then>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEach>
+          <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="[INDEX_RESULT_API]" DisplayName="Loop API :  DATA_CUSTOMER" sap:VirtualizedContainerService.HintSize="562,209" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[XMLDocument.Element(XML_SOAPENV+&quot;Envelope&quot;).Element(XML_SOAPENV+&quot;Body&quot;).Elements(XML_TEM+&quot;csoQueryAllProfileWsResponse&quot;).Elements.Elements.Elements]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="200,84" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEach>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="608,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

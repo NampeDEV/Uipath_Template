@@ -1,0 +1,89 @@
+<div style=""><div><style>/*<![CDATA[*/p {
+	font-family: arial , helvetica , sans-serif;
+	font-size: 12.0pt;
+    
+}
+td {
+	border: 1.0px solid black;
+	text-align: center;
+}
+td#td2 {
+	width: 115.0pt;
+	border-top: none;
+	border-left: none;
+	border-bottom: 1.0pt solid;
+	border-right: 1.0pt solid;
+	background: rgb(255,242,204);
+	padding: 0.0cm 5.4pt;
+}
+td#td3 {
+	height: 0.5in;
+}
+thead#thead1 {
+	width: 117.0px;
+	border-width: 1.0pt 1.0pt 1.0pt 1.0pt;
+	border-style: solid;
+	background:#A6D30A;
+	padding: 0.0in 5.4pt;
+	height: 41.75pt;
+}
+tbody#tbody1 {
+	background-color: white;
+}
+table#table1 {
+	width: 900.0px;
+	border: 1.0px solid black;
+	border-collapse: collapse;
+	font-family: tahoma , sans-serif;
+	font-size: 10.0pt;
+	height: 41.75pt;
+}
+th#th1 {
+	min-width: 40.0pt;
+	padding: 15.0px;
+	border: 1.0px solid black;
+	font-size: 10.0pt;
+	font-family: tahoma , sans-serif;
+	height: 41.75pt;
+}
+th#th2 {
+	border-top: 1.0px solid;
+	border-left: none;
+	border-bottom: 1.0pt solid windowtext;
+	border-right: 1.0pt solid windowtext;
+	background: rgb(255,192,0);
+	padding: 0.0in 5.4pt;
+	height: 16.5pt;
+}
+th#th3 {
+	width: 30.0%;
+	padding: 7.0px;
+	background-color: rgb(255,192,0);
+	border: 1.0px solid black;
+	height: 24.75pt;
+}
+ 
+
+/*]]>*/</style>
+<h1 style="color: red"> *****   IT-RPA  ***** </h1>
+ <p>เรียน ทีมผู้ดูแล <br>  &nbsp; &nbsp; &nbsp; รบกวนตรวจสอบข้อมูลและไฟล์แนบที่บอทดำเนินการแจ้งปัญหา ณ วันที่ 04-08-2022 13:35:07 <br> และส่งอีเมลย์ไปยังผู้ที่เกี่ยวข้อง    โดยสามารถแจ้งเคสสำเร็จ  2 จำนวน โดยมีรายละเอียดดังนี้ </p>
+ 
+<table id="table1">
+<thead id="thead1">
+    <tr  >
+        <th style="color=#FF9999" id="th1" colspan="2">CASE ID</th>
+        <th id="th1" style="min-width: 50pt;">Sender Name</th>
+        <th id="th1" style="min-width: 50pt;">เนื้อหาข้อความที่ลูกค้าได้รับ</th>
+        <th id="th1" style="min-width: 50pt;">ดำเนินการส่งข้อมูลเวลา</th>
+   </tr> 
+    </thead>
+        <tbody id="tbody1">
+ 				  <tr> <td id='td3' colspan='2'>  </td> <td id='td3'>  </td><td id='td3'>  </td><td id='td3'>  </td> </tr>   
+  <tr> <td id='td3' colspan='2'>  </td> <td id='td3'>  </td><td id='td3'>  </td><td id='td3'>  </td> </tr>    
+        </tbody>
+        
+</table>
+<br> <p> และไม่สามารถดำเนินการได้ 1 รายการ  โดยมีรายละเอียดตามตารางดังนี้ </p><table id="table1"><thead id="thead1"><tr style="background : #FF9999"><th   id="th1" colspan="2">CASE ID</th><th id="th1" style="min-width: 50pt;">ข้อผิดพลาดที่พบ</th></tr> </thead><tbody id="tbody1">   <tr> <td id='td3' colspan='2'>  </td> <td id='td3'> Success with no data found </td>  </tr>  </tbody></table>
+ 
+ 
+<h3 style="color: red"> ***** นี่เป็นข้อความอัตโนมัติจากหุ่นยนต์ โปรดอย่าตอบกลับผ่าน E-mail นี้ ***** </h3>
