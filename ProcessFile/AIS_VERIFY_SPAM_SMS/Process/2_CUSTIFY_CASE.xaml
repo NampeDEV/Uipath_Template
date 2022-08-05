@@ -71,35 +71,24 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_2_CUSTIFY_CASE" sap:VirtualizedContainerService.HintSize="526,970" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_2_CUSTIFY_CASE" sap:VirtualizedContainerService.HintSize="581,970" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogMessage_InfoFile workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Process\LogControl\LogMessage_InfoFile.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogMessage_InfoFile workflow" sap:VirtualizedContainerService.HintSize="539,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Process\LogControl\LogMessage_InfoFile.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ProcessLog">
-          <Literal x:TypeArguments="x:String">Process</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_NoteLog">
-          <Literal x:TypeArguments="x:String">-</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
-          <Literal x:TypeArguments="x:String">เงื่อนไขข้อมูล API เข้าสู่ : CASE 001 โดยมีข้อมูล RESULT_CODE = 0000 และ RESULT_MESSAGE = Success</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PathLogFile">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PATH_LOGMESSSGE&quot;).ToString + &quot;\&quot;" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FileXAML">
-          <Literal x:TypeArguments="x:String">2_CUSTIFY_CASE.xaml</Literal>
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ProcessLog">Process</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_NoteLog">-</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">เงื่อนไขข้อมูล API เข้าสู่ : CASE 001 โดยมีข้อมูล RESULT_CODE = 0000 และ RESULT_MESSAGE = Success</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PathLogFile">[in_Config("PATH_LOGMESSSGE").ToString + "\"]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FileXAML">2_CUSTIFY_CASE.xaml</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If sap2010:Annotation.AnnotationText="กรณีที่ SALEREP และ Content EMAIL ไม่เป็นค่าว่างและมีข้อมูลทั้งคู่" Condition="[String.IsNullOrEmpty(in_SALEREP_USERS) = False AND String.IsNullOrEmpty(in_EMAIL_CONTENT_SI)  = False]" sap:VirtualizedContainerService.HintSize="484,726" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="กรณีที่ SALEREP และ Content EMAIL ไม่เป็นค่าว่างและมีข้อมูลทั้งคู่" Condition="[String.IsNullOrEmpty(in_SALEREP_USERS) = False AND String.IsNullOrEmpty(in_EMAIL_CONTENT_SI)  = False]" sap:VirtualizedContainerService.HintSize="539,726" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>

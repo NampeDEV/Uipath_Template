@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1050,3046</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1050,2945</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -88,10 +88,9 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;If there are no transaction items remaining, out_TransactionItem is set to Nothing, which leads to the End Process state. &#xA;&#xA;For cases in which there is only a single transaction (i.e., a linear process), use an If activity to check whether the argument in_TransactionNumber has the value 1 (meaning it is the first and only transaction) and assign the transaction item to out_TransactionItem. For any other value of in_TransactionNumber, out_TransactionItem should be set to Nothing.&#xA;&#xA;If there are multiple transactions, use the argument in_TransactionNumber as an index to retrieve the correct transaction to be processed. If there are no more transactions left, it is necessary to set out_TransactionItem to Nothing, thus ending the process." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="739,2981" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;If there are no transaction items remaining, out_TransactionItem is set to Nothing, which leads to the End Process state. &#xA;&#xA;For cases in which there is only a single transaction (i.e., a linear process), use an If activity to check whether the argument in_TransactionNumber has the value 1 (meaning it is the first and only transaction) and assign the transaction item to out_TransactionItem. For any other value of in_TransactionNumber, out_TransactionItem should be set to Nothing.&#xA;&#xA;If there are multiple transactions, use the argument in_TransactionNumber as an index to retrieve the correct transaction to be processed. If there are no more transactions left, it is necessary to set out_TransactionItem to Nothing, thus ending the process." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="739,2880" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -99,9 +98,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Get Transaction Item" sap:VirtualizedContainerService.HintSize="697,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Get the transaction item&quot;]" />
-    <If Condition="[in_TransactionNumber = 1]" sap:VirtualizedContainerService.HintSize="697,1630" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[in_TransactionNumber = 1]" sap:VirtualizedContainerService.HintSize="697,1529" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <Sequence DisplayName="Get Transaction Process " sap:VirtualizedContainerService.HintSize="552,1443" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence DisplayName="Get Transaction Process " sap:VirtualizedContainerService.HintSize="552,1342" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -109,25 +108,15 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogMessage_InfoFile workflow" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\LogControl\LogMessage_InfoFile.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessLog">
-                <Literal x:TypeArguments="x:String">GetTransactionData</Literal>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_NoteLog">
-                <Literal x:TypeArguments="x:String">-</Literal>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
-                <Literal x:TypeArguments="x:String" xml:space="preserve">เริ่มสร้าง Transaction :  เพื่อดำเนินการให้บอทนำข้อมูลไปใช้งาน</Literal>
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_PathLogFile">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PATH_LOGMESSSGE&quot;).ToString + &quot;\&quot;" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_FileXAML">
-                <Literal x:TypeArguments="x:String">-</Literal>
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessLog">GetTransactionData</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_NoteLog">-</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage" xml:space="preserve">เริ่มสร้าง Transaction :  เพื่อดำเนินการให้บอทนำข้อมูลไปใช้งาน</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PathLogFile">[in_Config("PATH_LOGMESSSGE").ToString + "\"]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_FileXAML">-</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:BuildDataTable DataTable="[io_dt_TransactionData]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="510,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;FILENAME&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;FILEPATH&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;OPTION_NO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;MOBILE_NO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ACCOUNT_NO&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-          <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[in_Config(&quot;PATH_INPUT&quot;).ToString]" sap:VirtualizedContainerService.HintSize="510,1100" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+          <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[in_Config(&quot;PATH_INPUT&quot;).ToString]" sap:VirtualizedContainerService.HintSize="510,847" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
             <ui:ForEachFileX.Body>
               <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                 <ActivityAction.Argument1>
@@ -136,7 +125,7 @@
                 <ActivityAction.Argument2>
                   <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                 </ActivityAction.Argument2>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,851" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,598" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="RESULT_TEXTFILE" />
                     <Variable x:TypeArguments="x:String" Name="MOBILE_NO" />
@@ -180,30 +169,25 @@
                     </ui:MultipleAssign.AssignOperations>
                   </ui:MultipleAssign>
                   <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{Path.GetFileName(CurrentFile.ToString),CurrentFile.toString,OPTION_NO,MOBILE_NO,ACCOUNT_NO}]" DataTable="[io_dt_TransactionData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[CurrentFile.ToString]" />
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogMessage_InfoFile workflow" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\LogControl\LogMessage_InfoFile.xaml">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_ProcessLog">
-                        <Literal x:TypeArguments="x:String">GetTransactionData</Literal>
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_NoteLog">
-                        <Literal x:TypeArguments="x:String">-</Literal>
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage">
-                        <Literal x:TypeArguments="x:String" xml:space="preserve">เสร็จสิ้นการสร้าง Transaction </Literal>
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_PathLogFile">
-                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PATH_LOGMESSSGE&quot;).ToString + &quot;\&quot;" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_FileXAML">
-                        <Literal x:TypeArguments="x:String">-</Literal>
-                      </InArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                  </ui:InvokeWorkflowFile>
                 </Sequence>
               </ActivityAction>
             </ui:ForEachFileX.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
           </ui:ForEachFileX>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke LogMessage_InfoFile workflow" sap:VirtualizedContainerService.HintSize="510,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\LogControl\LogMessage_InfoFile.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessLog">GetTransactionData</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_NoteLog">-</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_LogMessage" xml:space="preserve">เสร็จสิ้นการสร้าง Transaction </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PathLogFile">[in_Config("PATH_LOGMESSSGE").ToString + "\"]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_FileXAML">-</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
         </Sequence>
       </If.Then>
     </If>
